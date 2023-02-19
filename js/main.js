@@ -1,4 +1,3 @@
-
 class Producto {
     constructor(idProd, precio, nombre, stock, tipo) {
         this.idProd = idProd;
@@ -26,6 +25,7 @@ let idProd = "";
 let idPrecio;
 let prod = "";
 let total = 0;
+let clientee ;
 
 let usuariosss ="";
 
@@ -49,8 +49,24 @@ for (let i = 1; i <= cantidadProds; i++) {
 
 }
 
+function cargarUsuarios(){
+    fetch('./usuarios.json')
+        .then(function(res){
+            return res.json();
+        })
+        .then(function(data){
+            console.log(data);
+        })
+}
+cargarUsuarios();
 
-let clientee = new Cliente(1, document.getElementById("user"), document.getElementById("apellido"));
+
+function agregarcli(){
+    var objetivos = document.getElementById("infousuario")    
+clientee = new Cliente(1, document.getElementById("user").value, document.getElementById("apellido").value);
+objetivos.innerHTML ="Usuario: " + clientee.nombrecli +" "+ clientee.Apellido;
+return(false)
+}
 
 // insterto los nombres de los productos
 
@@ -81,8 +97,10 @@ function agregar(id) {
     total = total + precios[parseInt(id) - 1];
 
     if (parseInt(id) < 7) {
+        var totalc = document.getElementById("totalCarrito")  
+        totalc.innerHTML="Total de compra: " + total ;
 
 
-        alert("Sr/a" + clientee.nombrecli + " se agregó Mate " + mates[parseInt(id) - 1] + "  al carrito, $ " + precios[parseInt(id) - 1] + ". Total de compra: " + total)
+//        alert("Sr/a" + clientee.nombrecli + " se agregó Mate " + mates[parseInt(id) - 1] + "  al carrito, $ " + precios[parseInt(id) - 1] + ". Total de compra: " + total)
     }
 };

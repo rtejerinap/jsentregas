@@ -19,7 +19,7 @@
             <input type="text" id="user" required/>
             <label for="apellido">Apellido: </label>
             <input type="text" id="apellido" required/>
-            <button type="submit">Login</button>
+            <button onclick="return agregarcli()">Login</button>
         </form>
     </div>
     <div class="container-fluid px-0">
@@ -88,7 +88,7 @@
                             <div class="card"> <img src="./img/grogu.jpg" class="card-img-top">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between"> <span id="tituMate3"
-                                            class="font-weight-bold">Mate Grogu</span> <span id="precio3"
+                                            class="font-weight-bold">Mate </span> <span id="precio3"
                                             class="font-weight-bold"></span> </div>
                                     <p class="card-text mb-1 mt-1">Mate impreso en 3D con polimero interno apto para
                                         consumo.</p>
@@ -126,7 +126,7 @@
                             <div class="card"> <img src="./img/GOKU.jpg" class="card-img-top">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between"> <span id="tituMate5"
-                                            class="font-weight-bold">Mate Gokú</span> <span id="precio5"
+                                            class="font-weight-bold">Mate Gok</span> <span id="precio5"
                                             class="font-weight-bold"></span> </div>
                                     <p class="card-text mb-1 mt-1">Mate impreso en 3D con polimero interno apto para
                                         consumo.</p>
@@ -165,6 +165,11 @@
 
 
             </div>
+        </div>
+        <div> 
+            <label id="infousuario">Usuario: Sin ingresar</label>
+            <label id="totalCarrito">Total Carrito: </label>
+
         </div>
     </div>
     <script src="js/main.js"></script>
