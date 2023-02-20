@@ -63,13 +63,15 @@ function cargarUsuarios(){
 }
 cargarUsuarios();
 
-
+let ingreso= document.getElementById("ingreso");
+ingreso.onclick= agregarcli;
 function agregarcli(){
     var objetivos = document.getElementById("infousuario")    
 clientee = new Cliente(1, document.getElementById("user").value, document.getElementById("apellido").value);
 objetivos.innerHTML ="Usuario: " + clientee.nombrecli +" "+ clientee.Apellido;
 return(false)
 }
+
 
 // insterto los nombres de los productos
 let tabsContenedor = document.getElementById("contenedortab") ;
@@ -91,17 +93,17 @@ for (const produ of productos) {
         <hr>
         <div class="card-body">
             <div class="text-right buttons"> <button class="btn btn-outline-dark">Agregar a
-                    Favoritos</button> <button onclick="agregar(1)" class="btn btn-dark">Agregar
+                    Favoritos</button> <button id="boton${produ.idProd}" onclick="agregar(${produ.idProd})" class="btn btn-dark">Agregar 
                     al carrito</button> </div>
         </div>
     </div>
 </div>`;
+//pongo onclick porque me cargaba todos los usando boton.onclick me sumaba todos los productos al cargar la pagina
 tabsContenedor.append(tabprod);
 
+
+
 }
-
-
-
 
 //Funcion para ir agregando los productos elegidos al carrito
 
@@ -111,8 +113,8 @@ function agregar(id) {
     if (parseInt(id) < 7) {
         var totalc = document.getElementById("totalCarrito")  
         totalc.innerHTML="Total de compra: " + total ;
-
-
 //        alert("Sr/a" + clientee.nombrecli + " se agregó Mate " + mates[parseInt(id) - 1] + "  al carrito, $ " + precios[parseInt(id) - 1] + ". Total de compra: " + total)
-    }
+    }    
 };
+
+
