@@ -1,8 +1,9 @@
 class Producto {
-    constructor(idProd, precio, nombre, stock, tipo) {
+    constructor(idProd, precio, nombre, ima, stock, tipo) {
         this.idProd = idProd;
         this.precio = precio;
         this.nombre = nombre;
+        this.imagen =ima;
         this.stock = stock;
     }
 
@@ -38,6 +39,8 @@ const mates = ["Stitch", "Piston", "Grogu", "Deadpool", "Gokú", "Storm Trooper"
 
 const precios = [1500, 1700, 1800, 2000, 1400, 1900];
 
+const imagenes=  ["./img/imagen1.jpg", "./img/piston.jpg", "./img/grogu.jpg", "./img/Deadpool.jpg", "./img/GOKU.jpg", "./img/storm.jpg"];
+
 idProd = "tituMate";
 idPrecio = "precio";
 idimg = "img";
@@ -45,7 +48,7 @@ prod = "Mate ";
 
 //creo los objetos productos
 for (let i = 1; i <= cantidadProds; i++) {
-    productos.push(new Producto(i, precios[i - 1], mates[i - 1], 5))
+    productos.push(new Producto(i, precios[i - 1], mates[i - 1],imagenes[i-1], 5))
 
 }
 
@@ -69,23 +72,32 @@ return(false)
 }
 
 // insterto los nombres de los productos
+let tabsContenedor = document.getElementById("contenedortab") ;
 
 for (const produ of productos) {
-    var objetivo = document.getElementById(idProd + produ.idProd);
-    objetivo.innerHTML = " " + prod + produ.nombre;
-    var objetivo = document.getElementById(idPrecio + produ.idProd);
-    objetivo.innerHTML = "Precio: $ " + produ.precio;
-    /*   var objetivo = document.getElementById(idimg+produ.idProd);
-      var ruta ="./img/imagen"+produ.idProd+".jpg";
-      alert( prod+produ.nombre+' id: '+ruta);
-      objetivo.insertAdjacentHTML("afterbegin", <img src={ruta} class={"card-img-top"}></img>); */
-}
+    let tabprod= document.createElement('div');
+    tabprod.className="col-md-4";
+    tabprod.innerHTML= `<div >
+    <div class="card"> <img id="img${produ.idProd}" src="${produ.imagen}" class="card-img-top">
+        <div class="card-body">
+            <div class="d-flex justify-content-between"> <span id="Mate${produ.idProd}"
+                    class="font-weight-bold">${produ.nombre}</span> <span id="precio${produ.idProd}"
+                    class="font-weight-bold">Precio: $${produ.precio}</span> </div>
+            <p class="card-text mb-1 mt-1">Mate impreso en 3D con polimero interno apto para
+                consumo.</p>
+            <div class="d-flex align-items-center flex-row"> <img src="./img/alerta.png"
+                    width="20"> <span class="guarantee">Oferta!!!</span> </div>
+        </div>
+        <hr>
+        <div class="card-body">
+            <div class="text-right buttons"> <button class="btn btn-outline-dark">Agregar a
+                    Favoritos</button> <button onclick="agregar(1)" class="btn btn-dark">Agregar
+                    al carrito</button> </div>
+        </div>
+    </div>
+</div>`;
+tabsContenedor.append(tabprod);
 
-
-for (let i = 1; i <= 6; i++) {
-
-    var objetivo = document.getElementById(idProd + i);
-    objetivo.innerHTML = prod + mates[i - 1];
 }
 
 
